@@ -1,0 +1,149 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, BigBlueTerm437 Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+window#waybar {
+    background: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 0 -3px transparent; */
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 20px;
+    opacity: 0.85;
+
+}
+
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #17b595;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #ffcafc;
+}
+
+#workspaces button:hover {
+    background: #ca1cd6;
+}
+
+#workspaces button.focused, #workspaces button.active {
+    background-color: #8b1dd0;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+
+
+#custom-applauncher{
+    color: #ffee00;
+    background-color: #ff0080;
+    font-size: 12px;
+    border: none;
+    border-radius: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    opacity: 0.95;
+}
+
+
+
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray,
+#mode,
+#mpd {
+    padding: 10px;
+    color: #ffdffd;
+    background-color: #8b1dd0;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    opacity: 0.85;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #3b78d3;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f53c3c;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #8b1dd0;
+    color: #ffdffd;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #8b1dd0;
+    color: #ffdffd;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(24);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
