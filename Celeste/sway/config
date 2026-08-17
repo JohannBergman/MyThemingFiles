@@ -22,7 +22,7 @@ set $file_explorer nautilus
 
 set $browser librewolf
 
-set $mpv_bg /home/the_overlordess/Videos/mpv_paper/celeste_bg.mp4
+set $mpv_bg /home/$USERNAME/Videos/mpv_paper/celeste_bg.mp4
 
 ### Output configuration
 #
